@@ -1,5 +1,5 @@
 #include "ls.h"
-
+//Deal with command 'ls'
 void one_para_ls(){
 	DIR *dp;
 	struct dirent *dirp;
