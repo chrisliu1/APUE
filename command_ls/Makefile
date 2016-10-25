@@ -1,5 +1,5 @@
-OBJ = main.o one_para_ls.o get_current_dir.o
-DEPS = ls.h
+OBJ = main.o one_para_ls.o ls_with_a.o initList.o ls_with_c.o get_current_dir.o
+EPS = ls.h
 CC = gcc
 CFLAGS = -I.
 %.o: %.c $(DEPS)
@@ -8,3 +8,6 @@ CFLAGS = -I.
 ls: $(OBJ)
 	$(CC) -g -o $@ $^ $(CFLAGS)
 
+.PHONY: clean
+clean:
+	rm *.o 
