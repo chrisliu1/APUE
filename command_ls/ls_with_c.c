@@ -16,15 +16,16 @@ void ls_with_c()
 	while( (dirp = readdir(dp)) != NULL){
 		if(stat(dirp->d_name, &statbuf) < 0)
 			fprintf(stderr, "%s: stat error", dirp->d_name);
-
-		if(open(dirp->d_name, O_RDWR | O_TRUNC) < 0)
-			fprintf(stderr, "%s: open error", dirp->d_name);
-		p = (FileLink)malloc(sizeof(fileNode));
-		strcat(p->filename, dirp->d_name);
-		p->modtime = statbuf.st_mtime;
-		p->next = head->next;
-		head->next = p;
-	}
+		if(strcmp(dirp->d_name[0], ".") != 0){
+			if(open(dirp->d_name, O_RDWR | O_TRUNC) < 0)
+				fprintf(stderr, "%s: open error", dirp->d_name);
+			p = (FileLink)malloc(sizeof(fileNode));
+			strcat(p->filename, dirp->d_name);
+			p->modtime = statbuf.st_mtime;
+			p->next = head->next;
+			head->next = p;
+		}
+	}	
 	BubbleSort(head);
 	p = head->next;
 	while(p->next != NULL){
