@@ -22,15 +22,15 @@ void ls_with_c()
 		else{
 			p = (FileLink)malloc(sizeof(fileNode));
 			strcat(p->filename, dirp->d_name);
-			p->modtime = statbuf.st_ctime;
+			p->actime = statbuf.st_atime;
 			p->next = head->next;
 			head->next = p;
 		}
-	}
+	}	
 	BubbleSort(head);
 	p = head->next;
-	while(p != NULL){
-		fprintf(stdout, "%s %d\n", p->filename, p->modtime);
+	while(p->next != NULL){
+		fprintf(stdout, "%s %d\n", p->filename, p->actime);
 		p = p->next;
 	}
 	fprintf(stdout, "\n");
@@ -38,21 +38,18 @@ void ls_with_c()
 
 void BubbleSort(FileLink head)
 {
-	FileLink p, prep, tail, temp;
-	while(head->next != tail){
-		prep = head;
-		p = head->next;
-		while(p->next != tail){
-			if(p->modtime < p->next->modtime){
-				temp = p->next;
-				prep->next = p->next;
-				p->next = p->next->next;
-				prep->next->next = p;
-				p = temp;
-			}
-		p = p->next;
-		prep = prep->next;
+	FileLink p, prep, tail;
+	prep = head;
+	p = head->next;
+	
+	while(p->next != tail){
+		if(p->actime < p->next->actime){
+			prep->next = p->next;
+			p->next = p->next->next;
+			prep->next->next = p;
+		}
+	p = p->next;
+	prep = prep->next;
 	}
 	tail = p;
-	}
 }
