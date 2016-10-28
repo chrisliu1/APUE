@@ -30,7 +30,7 @@ void ls_with_c()
 	BubbleSort(head);
 	p = head->next;
 	while(p != NULL){
-		fprintf(stdout, "%s %d\n", p->filename, p->modtime);
+		fprintf(stdout, "%s   ", p->filename);
 		p = p->next;
 	}
 	fprintf(stdout, "\n");

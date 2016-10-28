@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <utime.h>
 #include <fcntl.h>
+#include <time.h>
 
 #define MAXBUF 1024
 #define MAX_FILE_LENGTH 20
@@ -38,3 +39,6 @@ FileLink initList();
 
 //execute "ls -c"
 void ls_with_c();
+
+//execute "ls -l"
+void ls_with_l();
