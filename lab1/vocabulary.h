@@ -6,7 +6,7 @@
 *	Author: wjliu - wjliu1998@gmail.com
 *	Description: ---
 *	Create: 2016-11-02 13:59:55
-*       Last Modified: 2016-11-04 13:32:59
+*       Last Modified: 2016-11-04 16:02:03
 * *********************************************************/
 
 #ifndef _VOCABULARY_H_
@@ -25,6 +25,9 @@ typedef struct Vocabulary
 Vocabulary *CreateVocabulary(char *filename);
 
 /*Free the structure*/
-void FreeVocabulary(Vocabulary *);
+void FreeVocabulary(Vocabulary);
+
+//Return the number of words
+int NumberOfWords(Vocabulary);
 
 #endif

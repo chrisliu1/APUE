@@ -1,7 +1,7 @@
 CC=gcc
-DEPS = vocabulary.h
+DEPS = vocabulary.h readfile.h matrices.h
 CFLAGS=-I.
-OBJ=lab.o CreateVocabulary.o FreeVocabulary.o
+OBJ=lab.o CreateVocabulary.o FreeVocabulary.o PresentFile.o CreateMatrices.o
 
 %.o: %.c $(DEPS)
 	$(CC) -g -c -o  $@ $< $(CFLAGS)

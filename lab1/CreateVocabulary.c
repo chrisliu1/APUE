@@ -6,7 +6,7 @@
 *	Author: wjliu - wjliu1998@gmail.com
 *	Description: Open a file by filename and create a structure with the words in the file
 *	Create: 2016-11-04 10:13:34
-*       Last Modified: 2016-11-04 13:33:24
+*       Last Modified: 2016-11-04 16:04:53
 * *********************************************************/
 #include "vocabulary.h"
 #include <stdio.h>
@@ -28,6 +28,17 @@ Vocabulary *CreateVocabulary(char *filename){
 	fclose(fd);
 	return head;
 }
+
+int NumberOfWords(Vocabulary head){
+	Vocabulary p = head->next;
+	int i;
+	while(p != NULL){
+		i++;
+		p = p->next;
+	}
+	return i;
+}
+		
 		
 		
 	
